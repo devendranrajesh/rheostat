@@ -7,6 +7,7 @@ coverage
 build
 css/styles.css
 .nyc_output
+css/styles.css
 
 # Only apps should have lockfiles
 yarn.lock
