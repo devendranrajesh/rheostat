@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import { forbidExtraProps } from 'airbnb-prop-types';
 import { withStyles, withStylesPropTypes } from 'react-with-styles';
 
-import {
-  DEFAULT_HANDLE_WIDTH_UNITS,
-  BACKGROUND_HEIGHT_UNITS,
-  VERTICAL,
-} from './constants/SliderConstants';
+import { VERTICAL } from './constants/SliderConstants';
 
 import handlePropTypes, { handleDefaultProps } from './propTypes/HandlePropTypes';
 
@@ -52,10 +48,13 @@ DefaultHandle.propTypes = propTypes;
 
 DefaultHandle.defaultProps = defaultProps;
 
+const DEFAULT_HANDLE_WIDTH = 1.9 * 0.8;
+const BACKGROUND_HEIGHT = 0.25;
+
 export default withStyles(({ color, unit }) => ({
   DefaultHandle_handle: {
-    width: DEFAULT_HANDLE_WIDTH_UNITS * 3.8 * unit,
-    height: DEFAULT_HANDLE_WIDTH_UNITS * 3.8 * unit,
+    width: 2 * DEFAULT_HANDLE_WIDTH * unit,
+    height: 2 * DEFAULT_HANDLE_WIDTH * unit,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: color.grey,
@@ -65,7 +64,7 @@ export default withStyles(({ color, unit }) => ({
     zIndex: 2,
     boxShadow: `0 ${unit / 4}px ${unit / 4}px ${color.textDisabled}`,
     ':focus': {
-      boxShadow: `${color.focus} 0 0 2px 2px`,
+      boxShadow: `${color.teal} 0 0 1px 1px`,
     },
 
     ':after': {
@@ -99,33 +98,21 @@ export default withStyles(({ color, unit }) => ({
       width: 1,
       left: 13,
     },
-
-    background: {
-      borderRadius: 15,
-    },
   },
 
   DefaultHandle_handle__vertical: {
-    marginTop: -(DEFAULT_HANDLE_WIDTH_UNITS * 1.9) * unit,
-    left: ((BACKGROUND_HEIGHT_UNITS * 1.9) - (DEFAULT_HANDLE_WIDTH_UNITS * 1.9)) * unit,
-    progress: {
-      left: 2,
-      width: 13,
+    marginTop: -(DEFAULT_HANDLE_WIDTH) * unit,
+    left: (BACKGROUND_HEIGHT - DEFAULT_HANDLE_WIDTH) * unit,
+
+    ':before': {
+      top: 10,
     },
-    handle: {
-      left: -5,
-      marginTop: -12,
 
-      ':before': {
-        top: 10,
-      },
-
-      ':after': {
-        top: 13,
-        left: 8,
-        height: 1,
-        width: 10,
-      },
+    ':after': {
+      top: 13,
+      left: 8,
+      height: 1,
+      width: 10,
     },
   },
 
