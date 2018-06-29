@@ -25,5 +25,9 @@ if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir);
 }
 
+<<<<<<< HEAD
 const outputFilePath = optimizeForProduction ? `${dir}/_styles.css` : `${dir}/styles.css`;
+=======
+const outputFilePath = optimizeForProduction ? `${dir}/_slider.css` : `${dir}/slider.css`;
+>>>>>>> add css generating script and package.json hook
 fs.writeFileSync(outputFilePath, formattedCSS, 'utf8');
